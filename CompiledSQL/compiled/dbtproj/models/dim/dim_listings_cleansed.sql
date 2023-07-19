@@ -1,19 +1,19 @@
 
         WITH  __dbt__cte__src_listings as (
-WITH RAW_LISTINGS AS (
-Select * from AIRBNB.RAW.RAW_LISTINGS
-)
-Select 
-    ID as LISTING_ID,
-	LISTING_URL,
-	NAME as LISTING_NAME,
-	ROOM_TYPE,
-	MINIMUM_NIGHTS,
-	HOST_ID,
-	PRICE as PRICE_STR,
-	CREATED_AT,
-	UPDATED_AT
-FROM
+WITH RAW_LISTINGS AS (
+Select * from AIRBNB.raw.raw_listings
+)
+Select 
+    ID as LISTING_ID,
+	LISTING_URL,
+	NAME as LISTING_NAME,
+	ROOM_TYPE,
+	MINIMUM_NIGHTS,
+	HOST_ID,
+	PRICE as PRICE_STR,
+	CREATED_AT,
+	UPDATED_AT
+FROM
     RAW_LISTINGS
 ),src_listings AS (
         SELECT * FROM __dbt__cte__src_listings
