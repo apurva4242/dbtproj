@@ -22,6 +22,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
 
 target-path: "CompiledSQL" #directory which will store compiled SQL Files
 clean-targets:         # directories to be removed by `dbt clean`
