@@ -6,6 +6,10 @@ name: 'dbtproj'
 version: '1.0.0'
 config-version: 2
 
+#Add Global Variable
+vars:
+  surrogate_key_treat_nulls_as_empty_strings: True
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbtproj'
 

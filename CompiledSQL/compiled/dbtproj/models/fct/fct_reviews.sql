@@ -15,9 +15,11 @@ SENTIMENT AS REVIEW_SENTIMENT
 FROM
 RAW_REVIEWS
 ),src_reviews AS (
-    select * from __dbt__cte__src_reviews
+ SELECT * FROM __dbt__cte__src_reviews
 )
-select * from src_reviews
-where REVIEW_TEXT is not null
-
-AND REVIEW_DATE > ( select max(REVIEW_DATE) from AIRBNB.DEV.fct_reviews)
+SELECT
+ md5(cast(coalesce(cast(listing_id as TEXT), '') || '-' || coalesce(cast(review_date as TEXT), '') || '-' || coalesce(cast(reviewer_name as TEXT), '') || '-' || coalesce(cast(review_text as TEXT), '') as TEXT))
+ AS review_id,
+ *
+ FROM src_reviews
+WHERE review_text is not null
