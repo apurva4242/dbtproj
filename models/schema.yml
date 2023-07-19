@@ -32,3 +32,35 @@ models:
       description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
       tests:
         - positive_value
+
+  - name: dim_hosts_cleansed
+    description: Cleansed table which contains Airbnb hosts.
+    columns:
+
+    - name: host_id
+      description: Primary key for the hosts.
+      tests:
+        - unique
+        - relationships:
+            to: ref('dim_listings_cleansed')
+            field: host_id
+      
+    - name: host_name
+      description: The hosts's name.
+      tests:  
+        - not_null
+
+    - name: is_superhost
+      description: Indicates if a host is a superhost with a t/f statement.
+      tests:
+        - accepted_values:
+            values: ['t',
+                     'f']
+                     
+    - name: created_at
+      description:  The date a host is created.
+      tests: 
+        - not_null
+        
+    - name: updated_at
+      description: The date a host is updated.
