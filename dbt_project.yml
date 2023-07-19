@@ -38,10 +38,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbtproj:
-    #+materialized: view
-    # Config indicated by + and applies to all files under models/example/
-    #example:
-     src:
-      +materialized: ephemeral
-     dim:
-      +materialized: table
+      +materialized: view
+      +post-hook:
+        - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
+      src:
+        +materialized: ephemeral
+      dim:
+        +materialized: table
